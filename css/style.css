@@ -1,0 +1,101 @@
+:root {
+  --bg: #0f0b1a;
+  --surface: #1a1430;
+  --surface-2: #251c44;
+  --text: #ece8f8;
+  --muted: #9a90b8;
+  --accent: #8b5cf6;
+  --accent-2: #c084fc;
+  --ok: #34d399;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding-bottom: 80px;
+}
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px; position: sticky; top: 0; background: var(--bg); z-index: 5;
+}
+.topbar h1 { margin: 0; font-size: 1.4rem; letter-spacing: .08em; }
+.topbar h1 span { color: var(--accent-2); }
+.streak { margin: 0; color: var(--muted); font-size: .9rem; }
+
+main { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+h2 { font-size: 1.2rem; margin: 8px 0 12px; }
+h3 { font-size: 1rem; color: var(--muted); margin-top: 24px; }
+
+.view { display: none; }
+.view.active { display: block; }
+
+.card, .item {
+  background: var(--surface); border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
+}
+.item { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.item small, .muted { color: var(--muted); }
+.center { text-align: center; }
+summary { cursor: pointer; font-weight: 600; color: var(--accent-2); }
+
+.stack { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.grid .span { grid-column: 1 / -1; }
+.row { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 6px; }
+label { display: flex; flex-direction: column; font-size: .85rem; color: var(--muted); gap: 4px; }
+
+input, select {
+  background: var(--surface-2); color: var(--text); border: 1px solid transparent;
+  border-radius: 10px; padding: 10px; font: inherit; width: 100%; min-width: 0;
+}
+input:focus { outline: none; border-color: var(--accent); }
+
+button {
+  background: var(--accent); color: white; border: 0; border-radius: 10px;
+  padding: 10px 14px; font: inherit; font-weight: 600; cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button.ghost { background: var(--surface-2); color: var(--accent-2); }
+button.small { padding: 6px 10px; font-size: .85rem; }
+button.wide { width: 100%; margin-top: 8px; }
+button.done { background: var(--ok); }
+
+.clock { font-size: 3rem; font-variant-numeric: tabular-nums; margin: 4px 0; font-weight: 700; }
+.rest { color: var(--accent-2); font-weight: 600; margin: 0; }
+
+.set-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.set-row button { min-width: 44px; }
+
+.macros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.macro { background: var(--surface); border-radius: var(--radius); padding: 10px; text-align: center; }
+.macro b { display: block; font-size: 1.1rem; }
+.macro small { color: var(--muted); font-size: .75rem; }
+.bar { height: 6px; background: var(--surface-2); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.chips button { background: var(--surface-2); color: var(--muted); }
+.chips button.active { background: var(--accent); color: white; }
+
+.skill { display: block; }
+.skill header { display: flex; justify-content: space-between; align-items: center; }
+.level { font-size: .75rem; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--accent-2); }
+.steps { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+.steps li.got { color: var(--ok); text-decoration: line-through; }
+.steps li { cursor: pointer; padding: 2px 0; }
+
+.tabs {
+  position: fixed; bottom: 0; left: 0; right: 0; display: flex;
+  background: var(--surface); border-top: 1px solid var(--surface-2);
+}
+.tabs button {
+  flex: 1; background: none; border-radius: 0; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 0; font-size: 1.2rem;
+}
+.tabs button span { font-size: .7rem; }
+.tabs button.active { color: var(--accent-2); }

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CALI-CORE</title>
+  <meta name="description" content="Calisthenics-Trainings-App: Workout-Planung, Live-Tracking, Ernährung und Skill-Bibliothek">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>CALI<span>-CORE</span></h1>
+    <p class="streak" id="streak"></p>
+  </header>
+
+  <main>
+    <!-- WORKOUTS -->
+    <section id="view-plan" class="view active">
+      <h2>Workouts</h2>
+      <div id="workout-list" class="list"></div>
+      <details class="card">
+        <summary>+ Neues Workout</summary>
+        <form id="workout-form" class="stack">
+          <input name="name" placeholder="Name, z. B. Push Day" required>
+          <div id="exercise-rows" class="stack"></div>
+          <button type="button" id="add-row" class="ghost">+ Übung</button>
+          <button type="submit">Speichern</button>
+        </form>
+      </details>
+    </section>
+
+    <!-- LIVE SESSION -->
+    <section id="view-live" class="view">
+      <h2>Live-Session</h2>
+      <div id="live-empty" class="card muted">Starte ein Workout unter „Workouts".</div>
+      <div id="live" hidden>
+        <div class="card center">
+          <p class="muted" id="live-name"></p>
+          <p class="clock" id="live-clock">00:00</p>
+          <p class="rest" id="rest-clock" hidden></p>
+        </div>
+        <div id="live-sets" class="list"></div>
+        <button id="finish" class="wide">Workout beenden</button>
+      </div>
+      <h3>Verlauf</h3>
+      <div id="history" class="list"></div>
+    </section>
+
+    <!-- NUTRITION -->
+    <section id="view-food" class="view">
+      <h2>Ernährung · heute</h2>
+      <div class="macros" id="macros"></div>
+      <form id="food-form" class="card grid">
+        <input name="name" placeholder="Lebensmittel" required class="span">
+        <input name="kcal" type="number" min="0" placeholder="kcal" required>
+        <input name="protein" type="number" min="0" placeholder="Protein g">
+        <input name="carbs" type="number" min="0" placeholder="KH g">
+        <input name="fat" type="number" min="0" placeholder="Fett g">
+        <button type="submit" class="span">Eintragen</button>
+      </form>
+      <div id="food-list" class="list"></div>
+      <details class="card">
+        <summary>Tagesziele</summary>
+        <form id="goal-form" class="grid">
+          <label>kcal<input name="kcal" type="number"></label>
+          <label>Protein g<input name="protein" type="number"></label>
+          <button type="submit" class="span">Ziele speichern</button>
+        </form>
+      </details>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="view-skills" class="view">
+      <h2>Skill-Bibliothek</h2>
+      <div class="chips" id="skill-filter"></div>
+      <div id="skill-list" class="list"></div>
+    </section>
+  </main>
+
+  <nav class="tabs">
+    <button data-view="plan" class="active">🗂️<span>Workouts</span></button>
+    <button data-view="live">⏱️<span>Live</span></button>
+    <button data-view="food">🥗<span>Ernährung</span></button>
+    <button data-view="skills">🤸<span>Skills</span></button>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
